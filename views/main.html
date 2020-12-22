@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="index.php" method="post">
+<form action="/" method="post">
     <div>
         <label>Имя
             <input type="text" name="order[name]">
@@ -31,6 +31,11 @@
     </div>
     <input type="submit" value="Отправить">
 </form>
-<h2><a href="orders">Все заказы</a></h2>
+<br>
+<div>
+    <form action="/" method="get">
+        <input type="submit" value="Все заказы" name="orders">
+    </form>
+</div>
 </body>
 </html>

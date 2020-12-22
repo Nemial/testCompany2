@@ -1,7 +1,6 @@
 <?php
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
-$request = $_SERVER['REQUEST_URI'];
 
 if ($requestMethod === 'POST') {
     $data = http_build_query($_POST);
@@ -21,14 +20,10 @@ if ($requestMethod === 'POST') {
         require 'views/orderInCorrect.html';
         return;
     }
-}
-
-switch ($request) {
-    case '/':
-    case '':
-        require 'views/main.html';
-        break;
-    case '/orders':
-        require 'views/orders.php';
-        break;
+} elseif (!empty($_GET)) {
+    require 'views/orders.php';
+    return;
+} else {
+    require 'views/main.html';
+    return;
 }
