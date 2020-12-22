@@ -14,13 +14,27 @@ if ($method === 'POST') {
     $data = json_encode([$order]);
     $fileDb = __DIR__ . DIRECTORY_SEPARATOR . 'db.json';
     if (!file_exists($fileDb)) {
-        file_put_contents($fileDb, $data);
+        $isDone = file_put_contents($fileDb, $data);
+
+        if ($isDone) {
+            $result = ['status' => true];
+            echo json_encode($result);
+            return;
+        }
     } else {
         $db = json_decode(file_get_contents($fileDb), true);
         $db[] = $order;
         $fullData = json_encode($db);
-        file_put_contents($fileDb, $fullData);
+        $isDone = file_put_contents($fileDb, $fullData);
+
+        if ($isDone) {
+            $result = ['status' => true];
+            echo json_encode($result);
+            return;
+        }
     }
-    $result = ['status' => true];
+
+    $result = ['status' => false];
     echo json_encode($result);
+    return;
 }
