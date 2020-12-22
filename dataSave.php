@@ -11,12 +11,15 @@ if ($method === 'POST') {
             return;
         }
     }
-    $data = json_encode($_POST);
+    $data = json_encode([$order]);
     $fileDb = __DIR__ . DIRECTORY_SEPARATOR . 'db.json';
     if (!file_exists($fileDb)) {
         file_put_contents($fileDb, $data);
     } else {
-        file_put_contents($fileDb, $data, FILE_APPEND);
+        $db = json_decode(file_get_contents($fileDb), true);
+        $db[] = $order;
+        $fullData = json_encode($db);
+        file_put_contents($fileDb, $fullData);
     }
     $result = ['status' => true];
     echo json_encode($result);
