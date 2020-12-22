@@ -13,12 +13,12 @@ if ($requestMethod === 'POST') {
     $result = curl_exec($crl);
     ['status' => $status] = json_decode($result, true);
     curl_close($crl);
-    
+
     if ($status) {
-        require __DIR__ . DIRECTORY_SEPARATOR . 'views/orderCorrect.html';
+        require 'views/orderCorrect.html';
         return;
     } else {
-        require __DIR__ . DIRECTORY_SEPARATOR . 'views/orderInCorrect.html';
+        require 'views/orderInCorrect.html';
         return;
     }
 }
@@ -26,9 +26,9 @@ if ($requestMethod === 'POST') {
 switch ($request) {
     case '/':
     case '':
-        require __DIR__ . DIRECTORY_SEPARATOR . 'views/main.html';
+        require 'views/main.html';
         break;
     case '/orders':
-        require __DIR__ . DIRECTORY_SEPARATOR . 'views/orders.php';
+        require 'views/orders.php';
         break;
 }

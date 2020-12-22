@@ -12,7 +12,7 @@ if ($method === 'POST') {
         }
     }
     $data = json_encode([$order]);
-    $fileDb = __DIR__ . DIRECTORY_SEPARATOR . 'db.json';
+    $fileDb = 'db.json';
     if (!file_exists($fileDb)) {
         $isDone = file_put_contents($fileDb, $data);
 
