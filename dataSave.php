@@ -23,5 +23,4 @@ if ($method === 'POST') {
     }
     $result = ['status' => true];
     echo json_encode($result);
-
 }

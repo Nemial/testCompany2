@@ -13,6 +13,7 @@ if ($requestMethod === 'POST') {
     $result = curl_exec($crl);
     ['status' => $status] = json_decode($result, true);
     curl_close($crl);
+    
     if ($status) {
         require __DIR__ . DIRECTORY_SEPARATOR . 'views/orderCorrect.html';
         return;
