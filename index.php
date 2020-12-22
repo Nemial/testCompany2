@@ -22,10 +22,12 @@ if ($requestMethod === 'POST') {
     }
 }
 
-
 switch ($request) {
     case '/':
     case '':
         require __DIR__ . DIRECTORY_SEPARATOR . 'views/main.html';
+        break;
+    case '/orders':
+        require __DIR__ . DIRECTORY_SEPARATOR . 'views/orders.php';
         break;
 }
